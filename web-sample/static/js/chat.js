@@ -1,9 +1,14 @@
-var appId = '9DA1B1F4-0BE6-4DA8-82C5-2E81DAB56F23';
+// var appId = '9DA1B1F4-0BE6-4DA8-82C5-2E81DAB56F23';
+// var appId = 'B133D59E-2F7F-46A2-B4CE-5F3D966EE9A5';
+var appId = '0C3A96C2-2A98-42AC-A493-506476252F50';
+
+var currScrollHeight = 0;
 var currScrollHeight = 0;
 var MESSAGE_TEXT_HEIGHT = 27;
 
 var nickname = null;
 var userId = null;
+
 var channelListPage = 0;
 var currChannelUrl = null;
 var currChannelInfo = null;
@@ -438,7 +443,7 @@ $('#btn_messaging_chat').click(function () {
   } else {
     $('.right-section__modal-bg').show();
     $(this).addClass('left-nav-messaging--active');
-    userListToken = '';
+    userListToken = 'beda4a95ae8792916d25921663339c8b0d20bfa3';
     userListNext = 0;
     $('.modal-messaging-list').html('');
     getUserList(true);
@@ -1029,16 +1034,18 @@ var SendMessageHandler;
 
 var UserList = {};
 var isInit = false;
+// var accessToken = '0b2c7e2bd098132555256acfed7209140bce27f3'
 
 var channelMessageList = {};
 var groupChannelLastMessageList = {};
 
-function startSendBird(userId, nickName) {
+function startSendBird(userId, nickName, accessToken) {
   sb = new SendBird({
-    appId: appId
+    appId: appId,
+  
   });
 
-  sb.connect(userId, function (user, error) {
+  sb.connect(userId, accessToken, function (user, error) {
     if (error) {
       return;
     } else {
@@ -1739,9 +1746,10 @@ function init() {
   userId = decodeURI(decodeURIComponent(getUrlVars()['userid']));
   userId = checkUserId(userId);
   nickname = decodeURI(decodeURIComponent(getUrlVars()['nickname']));
+  accessToken = decodeURI(decodeURIComponent(getUrlVars()['accesstoken']));
 
   $('.init-check').show();
-  startSendBird(userId, nickname);
+  startSendBird(userId, nickname, accessToken);
   $('.left-nav-user-nickname').html(xssEscape(nickname));
 }
 

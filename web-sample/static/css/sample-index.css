@@ -59,8 +59,14 @@ input, button {
   border: 2px solid #32C5E6;
 }
 
+.index-accesstoken:focus,
+.index-accesstoken:hover,
+.index-accesstoken:active {
+  border: 2px solid #32C5E6;
+}
 
-.index-nickname, .index-userid {
+
+.index-nickname, .index-userid, .index-accesstoken  {
   padding: 0 10px 0 44px;
   background: url("../img/icon-username-landing.svg") #fff no-repeat 12px;
   width: 290px;
@@ -149,4 +155,14 @@ a.download-sample:visited {
   font-size: 16px;
   color: #c7b0ff;
   text-align: center;
+}
+
+.index-section.index-input {
+  width: 250px;
+  clear: both;
+}
+
+.index-section.index-input input {
+  width: 100%;
+  clear: both;
 }
